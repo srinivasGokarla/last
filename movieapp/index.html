@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>movie app</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap" rel="stylesheet">
+</head>
+
+<style>
+    
+
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+
+    #nav  {
+        display: flex;
+        margin: 30px;
+        list-style: none;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 60px;
+        border: 1px solid rgb(158, 8, 8);
+        background-color:rgb(37, 37, 37) ;
+        
+    }
+    #nav img {
+        width: 30%;
+        
+    }
+    #nav img:hover {
+        cursor: pointer;
+        
+    }
+    
+
+    #ne {
+        font-size: 28px;
+        font-weight: 600;
+        color: whitesmoke;
+    }
+    #ne:hover {
+        cursor: pointer;
+        color: tomato;
+    }
+
+    #inp {
+        width: 100%;
+        font-size: 25px;
+        color: #9f9999;
+        outline: none;
+        border-radius: 5 px;
+        background: whitesmoke;
+        padding: 4px 10 px;
+        border: none;
+    }
+
+    #parent {
+        width: 100%;
+        height: max-content;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+
+    }
+    #parent img:hover {
+        cursor: pointer;
+        opacity: 0.7;
+    }
+
+    .movie {
+        width: 15%;
+        height: 420px;
+        margin: .8%;
+    }
+
+    .movie img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    #btn {
+        font-size: 30px;
+        border-radius: 2px;
+        width: 120px;
+
+    }
+
+
+    #main {
+        background-color: green;
+        display: flex;
+        height: 488 px;
+    }
+
+    #img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    #poster {
+        width: 30%;
+
+    }
+
+    #detail {
+        font-size: 20px;
+        width: 60%;
+        padding: 10 px 20 px;
+        padding: 10px 20px;
+        text-align: left;
+
+    }
+
+    #para {
+        font-size: 35px;
+        margin: 0;
+        padding: 10 px;
+        background: red;
+        /* width: max-content; */
+    }
+
+    #para span {
+        background-color: #26ad26;
+        margin-left: 15px;
+        font-size: 30px;
+        padding: 0 p;
+
+    }
+
+    #search {
+        height: 500px;
+        background-color: whitesmoke;
+        position: absolute;
+        width: 100%;
+       display: none;
+
+    }
+</style>
+
+<body onload="movieData()">
+
+    <div id="nav">
+        
+            <div><a href="index.html"><img src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_square_2-d537fb228cf3ded904ef09b136fe3fec72548ebc1fea3fbbd1ad9e36364db38b.svg"/></a>
+                </div>
+            <div id="ne">Home</div>
+            <div id="ne">Tv Shows</div>
+            <div id="ne">Movies</div>
+            <div><input oninput="main()" id="inp" type="text" placeholder="Search">
+                <div id="search"></div>
+
+            </div>
+
+        
+    </div>
+    <div id="parent">
+    </div>
+</body>
+
+</html>
+<script src="index.js"></script>
