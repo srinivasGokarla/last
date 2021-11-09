@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <title>signup</title>
+</head>
+<style>
+    #signup-form,#login-form {
+        width: 20px;
+    }
+
+    input {
+        margin-top: 5px;
+    }
+    
+    #navbar {
+        display: grid;
+  grid-template-columns: repeat(9, 100px);
+  justify-content: space-between;
+border: 1px gray solid;
+background-color: honeydew;
+vertical-align: middle;
+padding-top: 40px;
+margin-bottom: 40px;
+
+    }
+
+    input {
+        width: 160px;
+        height: 20px;
+    }
+    button {
+        height: 30px;
+        width: 60px;
+    }
+   
+     img {
+        width: 30%;
+    }
+    img:hover {
+        cursor: pointer;
+        color: blue;
+    }
+     #fafa {
+        width:150%;
+       
+    }
+    #you {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+#videos {
+    display: grid;
+    grid-template-columns: repeat(4,24%);
+    grid-gap: 2%;
+}
+.userBox {
+display: flex;
+}
+.userLogin{
+z-index: 9999999;
+position: absolute;
+width: 330px;
+background-color: white;
+display: none;
+
+right: 21rem;
+box-shadow: 0 3px 6px rgb(0 0 0 / 16%);
+
+}
+.userLogin > button{
+display: block;
+padding: 10px;
+width: 310px;
+margin: 10px 10px;
+cursor: pointer;
+font-size: 19px;
+border-radius: 2px;
+background-color:transparent;
+border: 1px solid black;
+font-size: 15px;
+
+}
+.userLogin a{
+color: white;
+}
+.userLogin #a{
+color: black;
+}
+.userLogin > button:nth-child(1){
+background-color: #00afae;
+border: 1px solid #00c2c1;
+color: white;
+}
+.margin:hover > .userLogin {
+display: block;
+}
+
+</style>
+<body>
+    <div id="navbar">
+        <img src="https://www.pngitem.com/pimgs/m/30-302949_menu-bar-icon-png-transparent-png.png"/>
+        <a href="youtube.html"><img src="https://images.indianexpress.com/2017/08/youtube_logo_new-759.jpg" id="you"/></a>
+             <input type="text" id="query" placeholder="search for a video">
+             <button onclick="searchVideos()">search</button>
+             <img src="https://static.thenounproject.com/png/2313-200.png"/>
+             <div class="threeItem margin">
+                 <div class="userBox">
+                     <i class="fa fa-user-o" aria-hidden="true"></i>
+                     <p id="hover">  <img src="https://www.pngfind.com/pngs/m/93-938050_png-file-transparent-white-user-icon-png-download.png"/></p>
+                     <i class="fa fa-chevron-down arrow"></i>
+                 </div>
+                 <div class="userLogin">
+                     <button id="loginBtn"><a href="signin.html">Login</a></button>
+                     <button id="signUp"><a id="a" href="signup.html">New User?/ Sign Up</a></button>
+                 </div>
+             </div>
+             <img src="https://icon-library.com/images/white-video-camera-icon/white-video-camera-icon-15.jpg"/>
+             <img src="https://toppng.com/uploads/preview/grid-view-icon-icon-11553414054sph1l0smxi.png"/>
+             <img src="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-ios7-bell-512.png"/>
+             
+           
+ </div>
+    <div>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-5"></div>
+                <div class="col-3">
+                    <div id="signup">
+                    <form onsubmit="Signup(event)" id="signup-form">
+                        <h1>SignUp</h1>
+                        <input type="text" id="name" placeholder="name" />
+                        <input type="email" id="email" placeholder="email" />
+                        <input type="password" id="password" placeholder="password" />
+                        <input type="text" id="username" placeholder="username" />
+                        <input type="number" id="mobile" placeholder="mobile" />
+                        <input type="text" id="description" placeholder="description" />
+                        <button style="margin-top: 5px;"><a  style="text-decoration: none; color: black;" href="signin.html">Submit</a></button>
+                      </form>
+                </div></div>
+                <div class="col-4"></div>
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>
+
+<script>
+
+    function Signup(e) {
+        e.preventDefault()
+
+        let form = document.getElementById("signup-form");
+
+        let user_data = {
+
+            name: form.name.value,
+            email: form.email.value,
+            password: form.password.value,
+            username: form.username.value,
+            mobile: form.mobile.value,
+            description: form.description.value,
+
+        };
+
+         user_data = JSON.stringify(user_data)
+
+         fetch("https://masai-api-mocker.herokuapp.com/auth/register", {
+
+            method:"POST",
+
+            body: user_data,
+
+            headers:{
+                "Content-Type":"application/json",
+            },
+        })
+        
+         .then((res)=>{
+             return res.json()
+         })
+         .then((res) => {
+            console.log(res);
+         })
+         .catch((err)=> {
+             console.log(err);
+         });
+
+    }
+   
+</script>
