@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Product</title>
+    <link rel= "stylesheet" href = "styles/style.css"/>
+</head>
+<body>
+    <div id="navbar"></div>
+    <div id="products"></div>
+    <div id="search"></div>
+    <div id="parent">
+    </div>
+
+</body>
+</html>
+<script type="module">
+    
+import navbar from "./components/navbar.js";
+import {getData,append} from "./scripts/showData.js";
+
+let navbar_div = document.getElementById("navbar")
+
+navbar_div.innerHTML = navbar();
+
+
+let product = JSON.parse(localStorage.getItem('name'))
+console.log(product);
+
+let parent = document.getElementById('parent');
+
+async function productDetails() {
+
+    let res = await fetch(`https://themealdb.com/api/json/v1/1/categories.php${product}`);
+    let data = await res.json();
+    console.log(data);
+    showProducts(data)
+
+
+}
+
+productDetails()
+
+
+async function  showProducts(productName) {
+    try {
+
+        let res = await fetch(`https://themealdb.com/api/json/v1/1/categories.php=${productName}`);
+
+        let data = await res.json();
+        return data
+    } catch (e) {
+        console.log(e, 'e');
+    }
+}
+
+
+let search = document.getElementById('search');
+
+function searching(movies) {
+search.innerHTML = null
+    if (movies === undefined) {
+        return false
+    }
+
+    movies.forEach(function (product) {
+        let div = document.createElement('div')
+
+        let p = document.createElement('p')
+        p.textContent = product.name
+        // console.log(p.textContent);
+        div.onclick = function () {
+            localStorage.setItem('name', JSON.stringify(product.name))
+            window.location.href = 'search.html'
+        }
+
+        div.append(p)
+        search.append(div)
+        // search.style.visibility = 'visible'
+
+        console.log(product);
+    });
+    search.style.display = 'block'
+}
+
+
+
+
+async function main() {
+    let input = document.getElementById('inp').value
+
+    let res = await searchmovies(input);
+
+    let moviesData = res.Search
+
+
+    searching(res.Search)
+    // console.log(res);
+
+
+}
+function showProducts(product) {
+    parent.innerHTML = null
+    
+    
+
+    let div = document.createElement('div');
+    let name = document.createElement('h2');
+    
+    name.textContent = product.name
+
+    
+
+    let div = document.createElement("div");
+let img = document.createElement("img");
+img.src = product.strCategoryThumb;
+let name = document.createElement("p");
+name.innerText = product.strCategory;
+let description = document.createElement("p");
+description.innerText = product.strCategoryDescription
+
+  
+div.append(img,name,description)
+console.log(div)
+container.append(div)
+
+    }
+   
+
+
+</script>
