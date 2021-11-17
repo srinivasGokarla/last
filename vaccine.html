@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vaccination</title>
+</head>
+<body>
+    <input type="name" id="name">
+    <input type="number" id="age" name="tentacles">
+    <button onclick="Register()">Register</button>
+</body>
+</html>
+<script>
+let queue = ["Raju","Ravi","Surya","Sekhar","Yeswanth"]
+
+function Register() {
+    var name = document.getElementById("name").value;
+    var age = document.getElementById("age").value;
+
+    queue.push(name);
+    queue.push(age)
+
+    let message = `${name} Your registration succesful now`;
+
+    alert(message);
+
+    let mypromise1 = new Promise(function(resolve,reject) {
+        setInterval(function() {
+            if(queue[60] < age) {
+                resolve(`${name} its your turn now`)
+            }
+        }, 1000);
+    })
+
+    let mypromise = new Promise(function(resolve, reject) {
+
+        setInterval(function() {
+       
+        if(queue[0] === name) {
+            resolve(`${name}   its your turn now`);
+
+        }
+    },2000);
+     
+})
+
+mypromise.then(function(res) {
+    alert(res)
+});
+}
+
+
+function startVaccination() {
+    queue.shift();
+
+    if(queue.length === 0) {
+        clearInterval(interval);
+    }
+console.log(queue)
+}
+//startVaccination()
+
+let interval = setInterval(startVaccination, 5000)
+
+
+</script>
