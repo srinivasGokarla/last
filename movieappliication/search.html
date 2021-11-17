@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+   #nav  {
+        display: flex;
+        margin: 30px;
+        list-style: none;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 60px;
+        border: 1px solid rgb(158, 8, 8);
+        background-color:rgb(37, 37, 37) ;
+        
+    }
+    #nav img {
+        width: 30%;
+        
+    }
+    #nav img:hover {
+        cursor: pointer;
+        
+    }
+    
+
+    #ne {
+        font-size: 28px;
+        font-weight: 600;
+        color: whitesmoke;
+    }
+    #ne:hover {
+        cursor: pointer;
+        color: tomato;
+    }
+
+    #inp {
+        width: 100%;
+        font-size: 25px;
+        color: #9f9999;
+        outline: none;
+        border-radius: 5 px;
+        background: whitesmoke;
+        padding: 4px 10 px;
+        border: none;
+    }
+
+    #inp {
+        width: 100%;
+        font-size: 25px;
+        color: #9f9999;
+        outline: none;
+        border-radius: 5 px;
+        background: #01031a;
+        padding: 4px 10 px;
+        border: none;
+    }
+
+    #search {
+        
+        height: 500px;
+        background-color: #131a27;
+         overflow: scroll;
+        position: absolute;
+        width: 100%;
+       display: none;
+
+    }
+</style>
+<body>
+    <div id="nav">
+        
+        <div><a href="index.html"><img src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_square_2-d537fb228cf3ded904ef09b136fe3fec72548ebc1fea3fbbd1ad9e36364db38b.svg"/></a>
+            </div>
+        <div id="ne">Home</div>
+        <div id="ne">Tv Shows</div>
+        <div id="ne">Movies</div>
+        <div><input oninput="main()" id="inp" type="text" placeholder="Search">
+            <div id="search"></div>
+
+        </div>
+               
+
+            </li>
+
+        </ul>
+    </div>
+    <div id="parent">
+    </div>
+    
+</body>
+</html>
+<script src="search.js"></script>
