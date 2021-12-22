@@ -34,9 +34,9 @@ app.get("/books/:id", (req,res) => {
     res.send(book)
 })
 
-app.patch("/books/:id", (req,res) => {
+app.patch("/books/:author", (req,res) => {
     const newBooks = books.map((book) => {
-        if(req.params.id === book.id) {
+        if(req.params.author === book.author) {
             return req.body
         }
         return book

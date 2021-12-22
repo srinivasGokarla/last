@@ -1,0 +1,13 @@
+<%- include('_header',  {title: "All Products", stylesheet: "css/products.css"}) -%>
+
+<body class="background">
+    <div class="font" >
+    <% products.forEach(product => { %>
+    <p onclick="clicked(`<%= JSON.stringify(product) %>`)"><%=  product.title %></p>
+    <p><%=  product.price %></p>
+    <p><a class="font" href="products/<%=product._id%>"> click here</a></p>
+        <% }) %>
+    </div>
+</body>
+<script src="js/products.js"></script>
+</html>
